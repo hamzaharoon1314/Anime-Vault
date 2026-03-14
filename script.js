@@ -26,6 +26,9 @@
 // @match       https://miruro.to/*
 // @match       https://miruro.online/*
 // @match       https://animekai.to/*
+// @match       https://animekai.*/*
+// @match       https://anigo.to/*
+// @match       https://anikai.to/*
 // @match       https://animetsu.cc/*
 // @match       https://kaido.to/*
 // @match       https://kuudere.to/*
