@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Anime Vault - Smart Anime List Filter for Streaming Sites
 // @namespace   https://github.com/hamzaharoon1314/Anime-Vault/blob/main/script.js
-// @version     3.1.0
+// @version     3.1.2
 // @description Filter anime on by status. Choose exactly which statuses (Watching, Planning, Completed, Dropped, On Hold) to show or hide.
 // @icon        https://anilist.co/img/icons/android-chrome-512x512.png
 // @author      Hamza Haroon
@@ -139,7 +139,7 @@ const ANIME_SITES = [
     },
     {
         name: 'animekai',
-        url: ['animekai.to'],
+        url: ['animekai.to', 'animekai', 'anikai.to', 'anikai'],
         item: '.aitem',
         title: '.title',
         thumbnail: 'img',
