@@ -51,7 +51,7 @@
 
 2. Click the install link below to add the script:
 
-   > **[⬇ Install Anime Vault]([https://github.com/hamzaharoon1314/](https://github.com/hamzaharoon1314/Anime-Vault/raw/refs/heads/main/script.js))** *(see releases)*
+   > **[⬇ Install Anime Vault]([https://github.com/hamzaharoon1314/](https://github.com/hamzaharoon1314/Anime-Vault/raw/refs/heads/main/script.js)** *(see releases)*
 
 3. Visit any supported streaming site.
 
