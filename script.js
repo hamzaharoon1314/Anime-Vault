@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Anime Vault - Smart Anime List Filter for Streaming Sites
 // @namespace   https://github.com/hamzaharoon1314/Anime-Vault/blob/main/script.js
-// @version     3.1.2
+// @version     3.1.4
 // @description Filter anime on by status. Choose exactly which statuses (Watching, Planning, Completed, Dropped, On Hold) to show or hide.
 // @icon        https://anilist.co/img/icons/android-chrome-512x512.png
 // @author      Hamza Haroon
@@ -29,6 +29,7 @@
 // @match       https://animekai.*/*
 // @match       https://anigo.to/*
 // @match       https://anikai.to/*
+// @match       https://anikai.*/*
 // @match       https://animetsu.cc/*
 // @match       https://kaido.to/*
 // @match       https://kuudere.to/*
@@ -52,7 +53,6 @@ const LIBRARY_KEY    = 'anifilter_library';
 const SERVICE_KEY    = 'anifilter_service';
 const REFRESH_KEY    = 'anifilter_lastRefresh';
 const ENABLED_KEY    = 'anifilter_enabled';
-const VERSION        = '3.0.0';
 
 // Canonical status IDs used internally (service-agnostic)
 const STATUS = {
@@ -583,7 +583,7 @@ function injectPanelStyles() {
         #anifilter-fab {
             position: fixed;
             bottom: 24px;
-            right: 24px;
+            left: 24px;
             width: 48px;
             height: 48px;
             border-radius: 14px;
@@ -617,7 +617,7 @@ function injectPanelStyles() {
         #anifilter-panel {
             position: fixed;
             bottom: 84px;
-            right: 24px;
+            left: 24px;
             width: 320px;
             max-height: 88vh;
             overflow-y: auto;
@@ -968,6 +968,7 @@ function buildFAB() {
     const fab = document.createElement('button');
     fab.id = 'anifilter-fab';
     fab.title = 'AniFilter Settings';
+    fab.style.display = 'none';
     fab.textContent = '⬡';
     fab.addEventListener('click', () => {
         if (document.getElementById('anifilter-panel')) {
@@ -1051,7 +1052,13 @@ function getCurrentSite() {
 /***************************************************************
  * MENU COMMAND (fallback for no FAB)
  ***************************************************************/
-GM_registerMenuCommand('⬡ AniFilter Settings', () => buildSettingsPanel());
+GM_registerMenuCommand('⬡ AniFilter Settings', () => {
+    const fab = document.getElementById('anifilter-fab');
+    if (fab) {
+        fab.style.display = fab.style.display === 'none' ? 'flex' : 'none';
+    }
+    buildSettingsPanel(); // also open panel immediately on menu click
+});
 GM_registerMenuCommand('⟳ AniFilter: Import Library', () => importFullLibrary());
 
 /***************************************************************
