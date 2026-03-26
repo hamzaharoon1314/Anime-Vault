@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Anime Vault - Smart Anime List Filter for Streaming Sites
 // @namespace   https://github.com/hamzaharoon1314/Anime-Vault/blob/main/script.js
-// @version     3.1.4
+// @version     3.1.5
 // @description Filter anime on by status. Choose exactly which statuses (Watching, Planning, Completed, Dropped, On Hold) to show or hide.
 // @icon        https://anilist.co/img/icons/android-chrome-512x512.png
 // @author      Hamza Haroon
@@ -30,6 +30,8 @@
 // @match       https://anigo.to/*
 // @match       https://anikai.to/*
 // @match       https://anikai.*/*
+// @match       https://aniwatchtv.*/*
+// @match       https://aniwatchtv.to/*
 // @match       https://animetsu.cc/*
 // @match       https://kaido.to/*
 // @match       https://kuudere.to/*
@@ -41,6 +43,8 @@
 // @grant       GM.xmlHttpRequest
 // @connect     graphql.anilist.co
 // @connect     api.myanimelist.net
+// @downloadURL https://update.greasyfork.org/scripts/569625/Anime%20Vault%20-%20Smart%20Anime%20List%20Filter%20for%20Streaming%20Sites.user.js
+// @updateURL https://update.greasyfork.org/scripts/569625/Anime%20Vault%20-%20Smart%20Anime%20List%20Filter%20for%20Streaming%20Sites.meta.js
 // ==/UserScript==
 
 'use strict';
@@ -168,6 +172,13 @@ const ANIME_SITES = [
         title: '.title',
         thumbnail: 'img',
         timeout: 700
+    },
+    {
+    name: 'aniwatchtv',
+    url: ['aniwatchtv.to'],
+    item: '.flw-item',
+    title: '.film-name a.dynamic-name',
+    thumbnail: '.film-poster-img'
     }
 ];
 
@@ -412,6 +423,7 @@ function jaroWinkler(a, b) {
 class Website {
     constructor(site) {
         this.site = site;
+        /*
         GM_addStyle(`
             ${site.item} ${site.thumbnail}:hover {
                 opacity: 1 !important;
@@ -419,12 +431,22 @@ class Website {
                 transition: .15s ease-in-out !important;
             }
         `);
+        */
+GM_addStyle(`
+    ${site.item}:hover ${site.thumbnail},
+    ${site.thumbnail}:hover {
+        opacity: 1 !important;
+        filter: brightness(1) !important;
+        transition: .15s ease-in-out !important;
+    }
+`);
     }
 
     getAnimeItems() {
         return document.querySelectorAll(this.site.item);
     }
 
+    /*
     getAnimeTitle(animeItem) {
         const titleEl = animeItem.querySelector(this.site.title);
         return titleEl
@@ -433,6 +455,12 @@ class Website {
                 .map(n => n.textContent.trim())
                 .join('').trim()
             : '';
+    }
+    */
+
+    getAnimeTitle(animeItem) {
+    const titleEl = animeItem.querySelector(this.site.title);
+    return titleEl ? titleEl.textContent.trim() : '';
     }
 
     // Restore all items to full visibility (used when filter is disabled)
