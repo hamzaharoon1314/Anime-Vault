@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Anime Vault - Smart Anime List Filter for Streaming Sites
 // @namespace   https://github.com/hamzaharoon1314/Anime-Vault/blob/main/script.js
-// @version     3.1.5
+// @version     3.1.6
 // @description Filter anime on by status. Choose exactly which statuses (Watching, Planning, Completed, Dropped, On Hold) to show or hide.
 // @icon        https://anilist.co/img/icons/android-chrome-512x512.png
 // @author      Hamza Haroon
@@ -16,8 +16,6 @@
 // @match       https://gogoanime.tv/*
 // @match       https://gogoanime3.*/*
 // @match       https://gogoanime3.co/*
-// @match       https://animepahe.*/
-// @match       https://animepahe.si/
 // @match       https://animesuge.to/*
 // @match       https://animesuge.*/*
 // @match       https://*animesuge.cc/*
@@ -101,15 +99,6 @@ const ANIME_SITES = [
         item: '.items > li',
         title: '.name > a',
         thumbnail: '.img > a > img'
-    },
-    {
-        name: 'animepahe',
-        url: ['animepahe.si', 'animepahe.ru', 'animepahe.com', 'animepahe'],
-        item: '.episode-wrap > .episode',
-        title: '.episode-title > a',
-        thumbnail: '.episode-snapshot > img',
-        observe: '.episode-list-wrapper',
-        timeout: 100
     },
     {
         name: 'animesuge',
