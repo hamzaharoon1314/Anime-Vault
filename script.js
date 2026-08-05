@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Anime Vault - Smart Anime List Filter for Streaming Sites
 // @namespace   https://github.com/hamzaharoon1314/Anime-Vault/blob/main/script.js
-// @version     3.1.7
+// @version     3.2
 // @description Filter anime on by status. Choose exactly which statuses (Watching, Planning, Completed, Dropped, On Hold) to show or hide.
 // @icon        https://anilist.co/img/icons/android-chrome-512x512.png
 // @author      Hamza Haroon
@@ -14,6 +14,13 @@
 // @match       yugenanime.*
 // @match       anikototv.*
 // @match       anikoto.*
+// @match       miruro.*
+// @match       animekai.*
+// @match       animetsu.*
+// @match       kaido.*
+// @match       animepahe.*
+// @match       gogoanime.*
+// @match       kuudere.*
 // @match       https://anitaku.*/*
 // @match       https://anitaku.pe/*
 // @match       https://gogoanime.*/*
