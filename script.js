@@ -12,6 +12,8 @@
 // @match       https://yugenanime.sx/*
 // @match       yugeanime.*
 // @match       yugenanime.*
+// @match       anikototv.*
+// @match       anikoto.*
 // @match       https://anitaku.*/*
 // @match       https://anitaku.pe/*
 // @match       https://gogoanime.*/*
